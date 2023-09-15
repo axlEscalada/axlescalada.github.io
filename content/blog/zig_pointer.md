@@ -1,7 +1,6 @@
 +++
 title = "Cast arrays with pointers in Zig"
 date = 2023-08-14
-reading_time = {{wordcount / 200}}
 +++
 
 While implementing a Sha256 hashing algorithm using Zig, I encountered the problem of converting a [64]u8 array to a [16]u32 array. For example:

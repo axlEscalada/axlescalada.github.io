@@ -20,11 +20,11 @@ extra_syntaxes_and_themes = []
 # See below for list of allowed values.
 # highlight_theme = "base16-ocean-light"
 # highlight_theme = "boron"
-# highlight_theme = "gray-matter-dark"
+highlight_theme = "gray-matter-dark"
 # highlight_theme = "green"
 # highlight_theme = "gruvbox-dark"
 # highlight_theme = "kronuz"
-highlight_theme = "material-dark"
-
+# highlight_theme = "material-dark"
+# highlight_theme = "visual-studio-dark"
 [extra]
 # Put all your custom variables here

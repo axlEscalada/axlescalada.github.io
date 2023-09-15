@@ -5,7 +5,8 @@
   <h1 class="title">
     {{ page.title }}
   </h1>
-  <p class="subtitle"><strong>> {{ page.date }}</strong> ~ {{ page.reading_time }} min read</p>
-  {{ page.content | safe }}
+  {% set time = page.content | wordcount / 200 %}
+  <p class="subtitle"><strong> {{ page.date }}</strong> ~ {{ time | round(method="floor") }} </p>
+   {{ page.content | safe }}
 </div>
 {% endblock content %}
