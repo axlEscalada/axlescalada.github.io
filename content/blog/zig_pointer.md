@@ -27,7 +27,7 @@ fn cast(buffer: [64]u8, blocks: [16]u32) void {
 
 The first 8 bits buffer[idxBuff] are casted to 32 bits using the @as builtin function, and then shifted left (<<) 24 positions to fill with 0, moving the initial 8 bits from the right to the left.
 
-```
+```yml
 initial value:   01100001
 u32 casted:      00000000 00000000 00000000 01100001
 24 left shifted: 01100001 00000000 00000000 00000000
@@ -35,7 +35,7 @@ u32 casted:      00000000 00000000 00000000 01100001
 
 The same is done with the next 3 values, but changing the size and the number of shift left positions. The next value buffer[idxBuff + 1] becomes:
 
-```
+```yml
 initial value:   00100000
 u24 casted:      00000000_00000000_00100000
 16 left shifted: 00100000_00000000_00000000
@@ -44,20 +44,20 @@ u24 casted:      00000000_00000000_00100000
 
 
 After that cast and shift, a bitwise OR operation is performed with the casted values. This OR operation combines the four values as follows:
-```
-1100001 00000000 00000000 00000000 |
-        00100000_00000000_00000000 |
-                 01101101_00000000 |
-                          00110010
-Result:
-1100001_00100000_01101101_01100101
+```yml
+ 1100001 00000000 00000000 00000000 |
+         00100000_00000000_00000000 |
+                  01101101_00000000 |
+                           00110010
+ Result:
+ 1100001_00100000_01101101_01100101
 ```
 
 Finally we end up with the desired value 
 
 0b1100001_00100000_01101101_01100101
 
-### How zig solve this?
+## How zig solve this?
 
 check the code here
 ```zig
@@ -125,10 +125,10 @@ So this third line achieve that:
 s[i] = mem.readIntBig(u32, mem.asBytes(elem));
 ```
 
-First of all, the u32 value 'elem' is passed to the 'asBytes' function from the standard library to retrieve a slice of the underlying bytes of 'elem'. As a result, we end up with the same u8 values in the same order before being casted. Then, this slice is passed to the 'readIntBig' function. This function reads the slice of u8 values using big endian and casts it to u32.
+First of all, the u32 value **_elem_** is passed to the `asBytes` function from the standard library to retrieve a slice of the underlying bytes of 'elem'. As a result, we end up with the same u8 values in the same order before being casted. Then, this slice is passed to the 'readIntBig' function. This function reads the slice of u8 values using big endian and casts it to u32.
 
 {{ post_images(path="third-zig-post.png", caption="") }}
 
 
-The result is stored in s array, and that's how Zig achieves this casting
+The result is stored in s array, and that's how Zig achieves this casting.
 
