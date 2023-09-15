@@ -113,13 +113,18 @@ li {
 
 pre {
   background-color: #0f0f0f !important;
-  border-radius: 3px;
-  border-top: 1px solid black;
-  border-right:  1px solid black;
-  border-left:   1px solid black;
-  border-bottom:   1px solid black;
+  border-radius: 6px;
+  border-top: 2px solid black;
+  border-right:  2px solid black;
+  border-left:   2px solid black;
+  border-bottom:   2px solid black;
   box-shadow: 4px -4px black;
-  /* overflow: hidden; */
+
+  /* border-top: 1px solid #242423; */
+  /* border-right:  1px solid #242423; */
+  /* border-left:   1px solid #242423; */
+  /* border-bottom:   1px solid #242423; */
+  overflow: hidden;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
