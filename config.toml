@@ -1,0 +1,30 @@
+# The URL the site will be built for
+base_url = "https://axlescalada.github.io/personal-blog/"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+# When set to "true", all code blocks are highlighted.
+highlight_code = true
+
+# A list of directories used to search for additional `.sublime-syntax` and `.tmTheme` files.
+extra_syntaxes_and_themes = []
+
+# The theme to use for code highlighting.
+# See below for list of allowed values.
+# highlight_theme = "base16-ocean-light"
+# highlight_theme = "boron"
+# highlight_theme = "gray-matter-dark"
+# highlight_theme = "green"
+# highlight_theme = "gruvbox-dark"
+# highlight_theme = "kronuz"
+highlight_theme = "material-dark"
+
+[extra]
+# Put all your custom variables here
