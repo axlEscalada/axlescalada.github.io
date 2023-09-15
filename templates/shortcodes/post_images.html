@@ -5,8 +5,7 @@
   {% set imgpath = "images/" ~ path %}
 {% endif %}
 
-{% set thumb = resize_image(path=imgpath, width=600, height=350, op="scale") %}
-{% set image = resize_image(path=imgpath, width=5000, height=5000, op="fit") %}
+{% set thumb = resize_image(path=imgpath, width=600, height=350, op="fit") %}
 <figure>
     <img src="{{ thumb.url }}" />
     {% if caption %}<figcaption>{{ caption }}</figcaption>{% endif %}
