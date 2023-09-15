@@ -28,29 +28,22 @@ body {
   background-color: #010f0e;
 }
 
+.flex-container-blog img {
+  border: 1px solid #cfcccc;
+  border-radius: 10px;
+  filter: invert(10);
+}
+
 ::selection {
   background: #F6A2B0;
 }
 
 .profile{
-  margin-top: 6px;
-  box-shadow: 0px 0px 10px 0px #e7c6fa; 
-  margin-right: 10px;
-  margin-bottom: 0px;
-  width:100px;
-  height:100px;
-  border-radius: 50%;
-  filter: invert(80%);
+  width:90px;
+  height:90px;
+  transform: rotate(180deg);
   position:relative;
-  transition:all 1000s ease-out;
   float: left;
-}
-
-.profile:hover{
-  filter:invert(0);
-  transition:all 1s ease-out;
-  width:100px;
-  z-index:4;
 }
 
 .resume {
@@ -79,6 +72,11 @@ a{
   border-bottom-style: solid;
   border-bottom-width: 1px;
   width: fit-content;
+}
+
+a:hover {
+  color: #e6dcbc;
+  /* text-decoration: line-through; */
 }
 
 p {
