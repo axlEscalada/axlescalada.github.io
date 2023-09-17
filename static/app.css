@@ -18,12 +18,6 @@
     font-family: 'Iosevka';
 }
 
-html, body {
-  height: 100%;
-  display: flex !important;
-  flex-direction: column;
-}
-
 body {
   background-color: #010f0e;
 }
@@ -77,7 +71,6 @@ a{
 
 a:hover {
   color: #e6dcbc;
-  /* text-decoration: line-through; */
 }
 
 p {
@@ -118,11 +111,6 @@ pre {
   border-left:   2px solid black;
   border-bottom:   2px solid black;
   box-shadow: 4px -4px black;
-
-  /* border-top: 1px solid #242423; */
-  /* border-right:  1px solid #242423; */
-  /* border-left:   1px solid #242423; */
-  /* border-bottom:   1px solid #242423; */
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -133,6 +121,7 @@ code {
   padding-left: 5px;
   margin: 10px 8px 8px 3px !important;
   background-color: #0f0f0f !important;
+  overflow-y:scroll;
 }
 
 span {
@@ -150,66 +139,114 @@ td{
  white-space: nowrap;
 }
 
-.title{
-  margin: 0;
-  color: #ede7dd;
-  font-size: 2em;
-  flex: 1;
-}
+/* .title{ */
+/*   margin: 0; */
+/*   color: #ede7dd; */
+/*   font-size: 2em; */
+/*   flex: 1; */
+/* } */
 
 
 .flex-container-blog {
   align-items: start;
 }
 
-@media screen and (max-width:600px) and (orientation: landscape) {
-  h1 {
-    font-size: 14px;
+.flex-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure the container takes the full viewport height */
+  margin: 0;
+}
+
+.header, .content, .footer {
+    width: 60%; /* Make them 100% wide */
+}
+
+.header {
+  flex: 10%;
+  display: flex;
+}
+
+.content {
+  flex: 75%;
+  /* padding: 20px; */
+  /* margin-top: 20px; */
+}
+
+.footer {
+  flex: 15%;
+  margin-top: 5%;
+}
+
+.title {
+  font-size: 30px;
+  flex: 30%;
+  display: flex;
+  align-items: center; /* Center title content vertically */
+}
+
+.menu {
+  flex: 70%;
+  display: flex;
+  align-items: center; /* Center menu content vertically */
+  margin-left: 10%;
+}
+
+.menu-item {
+  margin-right: 15px
+}
+
+/* Media query for screens with a maximum width of 600px (mobile) */
+@media (max-width: 600px) {
+  .header, .content, .footer {
+      width: 95%; /* Set width to 100% for mobile view */
   }
   p {
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    line-height: 1.65rem;
+  }
+
+  .footer p {
     font-size: 10px;
   }
-  .flex-body{
-    margin:0px 0px !important;
+
+  figure {
+    margin: 5%;
   }
-  .menu{
-    margin:0;
+
+  img {
+    width: 95%;
   }
-}
 
-.flex-body {
-  margin: 0em 25%;
-  list-style: none;
-  display: block;
-  flex-direction: column;
-  flex: 4;
-}
+  span {
+    font-size: 13px;
+  }
 
-.flex-container {
-  list-style: none;
-  align-items: start;
-  flex-direction: row;
-  flex: 4;
 }
+/* .content { */
+/*   list-style: none; */
+/*   align-items: start; */
+/*   flex-direction: row; */
+/*   flex: 4; */
+/* } */
 
-.flex-header {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: flex-start;
-}
+/* .header { */
+/*   display: flex; */
+/*   align-items: center; */
+/*   flex-direction: row; */
+/*   justify-content: flex-start; */
+/* } */
+/**/
+/* .footer { */
+/*   padding-top: 30px; */
+/*   margin-top: auto; */
+/*   padding-bottom: 22px; */
+/* } */
 
-.section {
-  flex-grow: 4;
-}
-
-.flex-footer{
-  padding-top: 30px;
-  margin-top: auto;
-  padding-bottom: 22px;
-}
-
-.flex-footer p {
+.footer p {
   font-family: 'Iosevka light' !important;
   font-size: 12px;
 }
@@ -222,12 +259,12 @@ hr {
   width: 100%;
 }
 
-.menu {
-  width: 200px;
-  height: 150px;
-  margin: 10px 10em;
-  line-height: 150px;
-  font-size: 1em;
-  text-align: left;
-  flex: 6;
-}
+/* .menu { */
+/*   width: 200px; */
+/*   height: 150px; */
+/*   margin: 10px 10em; */
+/*   line-height: 150px; */
+/*   font-size: 1em; */
+/*   text-align: left; */
+/*   flex: 6; */
+/* } */
