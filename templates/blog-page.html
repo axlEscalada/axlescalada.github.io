@@ -6,7 +6,7 @@
     {{ page.title }}
   </h1>
   {% set time = page.content | wordcount / 200 %}
-  <p class="subtitle"><strong> {{ page.date }}</strong> ~ {{ time | round(method="floor") }} min read</p>
+  <p class="subtitle">{{ page.date }} ~ {{ time | round(method="floor") }} min read</p>
    {{ page.content | safe }}
 </div>
 {% endblock content %}

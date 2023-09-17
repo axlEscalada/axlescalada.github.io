@@ -36,7 +36,7 @@ body {
 }
 
 ::selection {
-  background: #F6A2B0;
+  background: #925D91;
 }
 
 .profile{
@@ -133,6 +133,10 @@ code {
   padding-left: 5px;
   margin: 10px 8px 8px 3px !important;
   background-color: #0f0f0f !important;
+}
+
+span {
+  font-size: 15.4px;
 }
 
 table{
