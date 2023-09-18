@@ -1,0 +1,270 @@
+@font-face {
+    font-family: 'Iosevka';
+    font-style: normal;
+    font-weight: 500;
+    src: url("fonts/iosevka-custom-regular.woff2") format('woff2'),
+         url("fonts/iosevka-custom-regular.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: 'Iosevka light';
+    font-style: normal;
+    font-weight: 100;
+    src: url("fonts/iosevka-custom-extendedlight.woff2") format('woff2'),
+         url("fonts/iosevka-custom-extendedlight.ttf") format('truetype');
+}
+
+* {
+    font-family: 'Iosevka';
+}
+
+body {
+  background-color: #010f0e;
+}
+
+.flex-container-blog img {
+  border: 1px solid #cfcccc;
+  border-radius: 10px;
+
+  filter: invert(0.95);
+}
+
+::selection {
+  background: #925D91;
+}
+
+.profile{
+  width:90px;
+  height:90px;
+  transform: rotate(180deg);
+  position:relative;
+  float: left;
+}
+
+.resume {
+  text-align: justify;
+}
+
+.title-link {
+  color: #E7CB7B;
+  text-decoration: none;
+  padding-bottom: 0px;
+  border-bottom-style: solid;
+  border-bottom-width: 0px;
+  width: fit-content;
+}
+
+.subtitle {
+  margin: 1em 0em;
+  font-family: 'Iosevka light';
+  font-size: 15px;
+}
+
+a{
+  color: #F6A2B0;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  width: fit-content;
+}
+
+a:hover {
+  color: #e6dcbc;
+}
+
+p {
+  /* color: #ede7dd; */
+  /* color: #e6dcbc; */
+  color: #f0e4c0;
+  /* color: #f2e9e4; */
+  font-size: 17px;
+  margin: 0;
+  letter-spacing: 0.7px;
+  line-height: 1.75rem;
+}
+
+h1{
+  font-size: 20px;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #DCB2A8 !important;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  color: #ede7dd;
+  margin-top: 1em;
+}
+
+pre {
+  background-color: #0f0f0f !important;
+  border-radius: 6px;
+  border-top: 2px solid black;
+  border-right:  2px solid black;
+  border-left:   2px solid black;
+  border-bottom:   2px solid black;
+  box-shadow: 4px -4px black;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+code {
+  padding-left: 5px;
+  margin: 10px 8px 8px 3px !important;
+  background-color: #0f0f0f !important;
+  overflow-y:hidden;
+}
+
+span {
+  font-size: 15.4px;
+}
+
+table{
+  table-layout:fixed;
+  width:100%;
+}
+
+td{
+ max-width: 100px;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+}
+
+/* .title{ */
+/*   margin: 0; */
+/*   color: #ede7dd; */
+/*   font-size: 2em; */
+/*   flex: 1; */
+/* } */
+
+
+.flex-container-blog {
+  align-items: start;
+}
+
+.flex-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure the container takes the full viewport height */
+  margin: 0;
+}
+
+.header, .content, .footer {
+    width: 60%; /* Make them 100% wide */
+}
+
+.header {
+  flex: 10%;
+  display: flex;
+}
+
+.content {
+  flex: 75%;
+  /* padding: 20px; */
+  /* margin-top: 20px; */
+}
+
+.footer {
+  flex: 15%;
+  margin-top: 5%;
+}
+
+.title {
+  font-size: 30px;
+  flex: 30%;
+  display: flex;
+  align-items: center; /* Center title content vertically */
+}
+
+.menu {
+  flex: 70%;
+  display: flex;
+  align-items: center; /* Center menu content vertically */
+  margin-left: 10%;
+}
+
+.menu-item {
+  margin-right: 15px
+}
+
+/* Media query for screens with a maximum width of 600px (mobile) */
+@media (max-width: 600px) {
+  .header, .content, .footer {
+      width: 95%; /* Set width to 100% for mobile view */
+  }
+  p {
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    line-height: 1.65rem;
+  }
+
+  .footer p {
+    font-size: 10px;
+  }
+
+  figure {
+    margin: 5%;
+  }
+
+  img {
+    width: 95%;
+  }
+
+  span {
+    font-size: 13px;
+  }
+
+}
+/* .content { */
+/*   list-style: none; */
+/*   align-items: start; */
+/*   flex-direction: row; */
+/*   flex: 4; */
+/* } */
+
+/* .header { */
+/*   display: flex; */
+/*   align-items: center; */
+/*   flex-direction: row; */
+/*   justify-content: flex-start; */
+/* } */
+/**/
+/* .footer { */
+/*   padding-top: 30px; */
+/*   margin-top: auto; */
+/*   padding-bottom: 22px; */
+/* } */
+
+.footer p {
+  font-family: 'Iosevka light' !important;
+  font-size: 12px;
+}
+
+hr {
+  border: 1px solid #ede7dd;
+  border-radius: 5px;
+}
+.row {
+  width: 100%;
+}
+
+/* .menu { */
+/*   width: 200px; */
+/*   height: 150px; */
+/*   margin: 10px 10em; */
+/*   line-height: 150px; */
+/*   font-size: 1em; */
+/*   text-align: left; */
+/*   flex: 6; */
+/* } */
