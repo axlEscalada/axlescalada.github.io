@@ -1,25 +1,32 @@
 @font-face {
-    font-family: 'Iosevka';
-    font-style: normal;
-    font-weight: 500;
-    src: url("fonts/iosevka-custom-regular.woff2") format('woff2'),
-         url("fonts/iosevka-custom-regular.ttf") format('truetype');
+  font-family: "Iosevka";
+  font-style: normal;
+  font-weight: 500;
+  src:
+    url("fonts/iosevka-custom-regular.woff2") format("woff2"),
+    url("fonts/iosevka-custom-regular.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'Iosevka light';
-    font-style: normal;
-    font-weight: 100;
-    src: url("fonts/iosevka-custom-extendedlight.woff2") format('woff2'),
-         url("fonts/iosevka-custom-extendedlight.ttf") format('truetype');
+  font-family: "Iosevka light";
+  font-style: normal;
+  font-weight: 100;
+  src:
+    url("fonts/iosevka-custom-extendedlight.woff2") format("woff2"),
+    url("fonts/iosevka-custom-extendedlight.ttf") format("truetype");
 }
 
 * {
-    font-family: 'Iosevka';
+  font-family: "Iosevka";
+  /* font-family: "Menlo"; */
 }
 
 body {
-  background-color: #010f0e;
+  /* background-color: #010f0e; */
+  /* background-color: #ffffff; */
+  /* background-color: #0d0d0d; */
+  /* background-color: #000000; */
+  background-color: #040404;
 }
 
 .flex-container-blog img {
@@ -30,14 +37,14 @@ body {
 }
 
 ::selection {
-  background: #925D91;
+  background: #925d91;
 }
 
-.profile{
-  width:90px;
-  height:90px;
+.profile {
+  width: 90px;
+  height: 90px;
   transform: rotate(180deg);
-  position:relative;
+  position: relative;
   float: left;
 }
 
@@ -46,7 +53,8 @@ body {
 }
 
 .title-link {
-  color: #E7CB7B;
+  font-family: "Iosevka";
+  color: #e7cb7b;
   text-decoration: none;
   padding-bottom: 0px;
   border-bottom-style: solid;
@@ -56,12 +64,12 @@ body {
 
 .subtitle {
   margin: 1em 0em;
-  font-family: 'Iosevka light';
-  font-size: 15px;
+  font-family: "Iosevka light";
+  font-size: 13px;
 }
 
-a{
-  color: #F6A2B0;
+a {
+  color: #f6a2b0;
   text-decoration: none;
   padding-bottom: 2px;
   border-bottom-style: solid;
@@ -73,44 +81,67 @@ a:hover {
   color: #e6dcbc;
 }
 
-p {
+p,
+ul {
   /* color: #ede7dd; */
   /* color: #e6dcbc; */
-  color: #f0e4c0;
-  /* color: #f2e9e4; */
-  font-size: 17px;
+  /* color: #f0e4c0; */
+  /* color: #1f1e1e; */
+  /* color: #ababab; */
+  /* color: #c4c4c4; */
+  /* color: #b0b0b0; */
+  color: #cccccc;
+  font-size: 16px;
   margin: 0;
-  letter-spacing: 0.7px;
-  line-height: 1.75rem;
+  letter-spacing: 0.5px;
+  line-height: 1.55rem;
 }
 
-h1{
+li {
+  margin: 10px;
+}
+
+h1 {
   font-size: 20px;
 }
 
-h1, h2, h3, h4, h5 {
-  color: #DCB2A8 !important;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #dcb2a8 !important;
 }
 
-ul {
+.blog-ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-li {
+.blog-li {
+  font-family: "Iosevka";
+  font-size: 14px;
   color: #ede7dd;
   margin-top: 1em;
 }
 
 pre {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 63, 103, 0.5) transparent;
   background-color: #0f0f0f !important;
+  /* background-color: #ffffff !important; */
   border-radius: 6px;
-  border-top: 2px solid black;
-  border-right:  2px solid black;
-  border-left:   2px solid black;
-  border-bottom:   2px solid black;
-  box-shadow: 4px -4px black;
+  /* border-color: #424242 !important; */
+  border-top: 1px solid #2d2d2d;
+  /* border-top: 1px solid #000000; */
+  border-right: 1px solid #2d2d2d;
+  /* border-right: 1px solid #000000; */
+  border-left: 1px solid #2d2d2d;
+  /* border-left: 1px solid #000000; */
+  border-bottom: 1px solid #2d2d2d;
+  /* border-bottom: 1px solid #000000; */
+  /* box-shadow: 4px -4px #181818; */
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -121,22 +152,44 @@ code {
   padding-left: 5px;
   margin: 10px 8px 8px 3px !important;
   background-color: #0f0f0f !important;
-  overflow-y:hidden;
+  overflow-y: hidden;
+}
+
+pre table td {
+  padding: 0;
+}
+
+/* numbers in code block */
+td:first-child {
+  width: 20px;
+  color: #696969;
+}
+
+/* Style for the code column */
+pre table td:nth-child(2) {
+  white-space: pre;
+}
+
+/* Ensure code respects indentation */
+pre table td:nth-child(2) code {
+  display: block;
+  tab-size: 4;
+  -moz-tab-size: 4;
 }
 
 span {
   font-size: 15.4px;
 }
 
-table{
-  table-layout:fixed;
-  width:100%;
+table {
+  table-layout: fixed;
+  width: 100%;
 }
 
-td{
- max-width: 100px;
- text-overflow: ellipsis;
- white-space: nowrap;
+td {
+  max-width: 100px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* .title{ */
@@ -145,7 +198,6 @@ td{
 /*   font-size: 2em; */
 /*   flex: 1; */
 /* } */
-
 
 .flex-container-blog {
   align-items: start;
@@ -160,8 +212,10 @@ td{
   margin: 0;
 }
 
-.header, .content, .footer {
-    width: 60%; /* Make them 100% wide */
+.header,
+.content,
+.footer {
+  width: 60%; /* Make them 100% wide */
 }
 
 .header {
@@ -170,17 +224,18 @@ td{
 }
 
 .content {
-  flex: 75%;
+  flex: 80%;
   /* padding: 20px; */
   /* margin-top: 20px; */
 }
 
 .footer {
-  flex: 15%;
+  flex: 10%;
   margin-top: 5%;
 }
 
 .title {
+  font-family: "Iosevka";
   font-size: 30px;
   flex: 30%;
   display: flex;
@@ -195,13 +250,16 @@ td{
 }
 
 .menu-item {
-  margin-right: 15px
+  font-family: "Iosevka" !important;
+  margin-right: 15px;
 }
 
 /* Media query for screens with a maximum width of 600px (mobile) */
 @media (max-width: 600px) {
-  .header, .content, .footer {
-      width: 95%; /* Set width to 100% for mobile view */
+  .header,
+  .content,
+  .footer {
+    width: 95%; /* Set width to 100% for mobile view */
   }
   p {
     font-size: 15px;
@@ -224,7 +282,6 @@ td{
   span {
     font-size: 13px;
   }
-
 }
 /* .content { */
 /*   list-style: none; */
@@ -247,7 +304,7 @@ td{
 /* } */
 
 .footer p {
-  font-family: 'Iosevka light' !important;
+  font-family: "Iosevka light" !important;
   font-size: 12px;
 }
 
