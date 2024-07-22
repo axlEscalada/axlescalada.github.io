@@ -8,6 +8,15 @@
 }
 
 @font-face {
+  font-family: "Iosevka medium";
+  /* font-style: normal; */
+  /* font-weight: 500; */
+  src:
+    url("fonts/iosevka-custom-medium.woff2") format("woff2"),
+    url("fonts/iosevka-custom-medium.ttf") format("truetype");
+}
+
+@font-face {
   font-family: "Iosevka light";
   font-style: normal;
   font-weight: 100;
@@ -16,17 +25,19 @@
     url("fonts/iosevka-custom-extendedlight.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://mdn.github.io/web-fonts/LatoReg.ttf");
+}
+
 * {
-  font-family: "Iosevka";
-  /* font-family: "Menlo"; */
+  font-family: "Iosevka", sans-serif;
 }
 
 body {
-  /* background-color: #010f0e; */
-  /* background-color: #ffffff; */
-  /* background-color: #0d0d0d; */
-  /* background-color: #000000; */
-  background-color: #040404;
+  background-color: #141414;
 }
 
 .flex-container-blog img {
@@ -83,18 +94,11 @@ a:hover {
 
 p,
 ul {
-  /* color: #ede7dd; */
-  /* color: #e6dcbc; */
-  /* color: #f0e4c0; */
-  /* color: #1f1e1e; */
-  /* color: #ababab; */
-  /* color: #c4c4c4; */
-  /* color: #b0b0b0; */
-  color: #cccccc;
+  color: #e8e8e8;
   font-size: 16px;
   margin: 0;
-  letter-spacing: 0.5px;
-  line-height: 1.55rem;
+  letter-spacing: 0.2px;
+  line-height: 1.4rem;
 }
 
 li {
@@ -129,19 +133,20 @@ h5 {
 pre {
   scrollbar-width: thin;
   scrollbar-color: rgba(100, 63, 103, 0.5) transparent;
-  background-color: #0f0f0f !important;
+  /* background-color: #0f0f0f !important; */
+  background-color: #1c1c1c !important;
   /* background-color: #ffffff !important; */
   border-radius: 6px;
   /* border-color: #424242 !important; */
-  border-top: 1px solid #2d2d2d;
+  border-top: 2px solid #2d2d2d;
   /* border-top: 1px solid #000000; */
   border-right: 1px solid #2d2d2d;
   /* border-right: 1px solid #000000; */
-  border-left: 1px solid #2d2d2d;
+  border-left: 2px solid #2d2d2d;
   /* border-left: 1px solid #000000; */
   border-bottom: 1px solid #2d2d2d;
   /* border-bottom: 1px solid #000000; */
-  /* box-shadow: 4px -4px #181818; */
+  box-shadow: 6px 5px #000000;
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -151,7 +156,8 @@ pre {
 code {
   padding-left: 5px;
   margin: 10px 8px 8px 3px !important;
-  background-color: #0f0f0f !important;
+  /* background-color: #0f0f0f !important; */
+  background-color: #1c1c1c !important;
   overflow-y: hidden;
 }
 
