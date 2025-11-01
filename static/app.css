@@ -1,39 +1,7 @@
-@font-face {
-  font-family: "Iosevka";
-  font-style: normal;
-  font-weight: 500;
-  src:
-    url("fonts/iosevka-custom-regular.woff2") format("woff2"),
-    url("fonts/iosevka-custom-regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Iosevka medium";
-  /* font-style: normal; */
-  /* font-weight: 500; */
-  src:
-    url("fonts/iosevka-custom-medium.woff2") format("woff2"),
-    url("fonts/iosevka-custom-medium.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Iosevka light";
-  font-style: normal;
-  font-weight: 100;
-  src:
-    url("fonts/iosevka-custom-extendedlight.woff2") format("woff2"),
-    url("fonts/iosevka-custom-extendedlight.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: Lato;
-  font-style: normal;
-  font-weight: 400;
-  src: url("https://mdn.github.io/web-fonts/LatoReg.ttf");
-}
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&display=swap');
 
 * {
-  font-family: "Iosevka", sans-serif;
+  font-family: "Josefin Sans", serif;
 }
 
 body {
@@ -73,7 +41,7 @@ body {
 }
 
 .title-link {
-  font-family: "Iosevka";
+  font-family: "Josefin Sans";
   color: #e7cb7b;
   text-decoration: none;
   padding-bottom: 0px;
@@ -84,8 +52,9 @@ body {
 
 .subtitle {
   margin: 1em 0em;
-  font-family: "Iosevka light";
-  font-size: 13px;
+  font-family: "Josefin Sans";
+  font-weight: 200;
+  font-size: 15px;
 }
 
 a {
@@ -104,7 +73,7 @@ a:hover {
 p,
 ul {
   color: #e8e8e8;
-  font-size: 16px;
+  font-size: 18px;
   margin: 0;
   letter-spacing: 0.2px;
   line-height: 1.4rem;
@@ -133,8 +102,8 @@ h5 {
 }
 
 .blog-li {
-  font-family: "Iosevka";
-  font-size: 14px;
+  font-family: "Josefin Sans";
+  font-size: 15px;
   color: #ede7dd;
   margin-top: 1em;
 }
@@ -207,13 +176,6 @@ td {
   white-space: nowrap;
 }
 
-/* .title{ */
-/*   margin: 0; */
-/*   color: #ede7dd; */
-/*   font-size: 2em; */
-/*   flex: 1; */
-/* } */
-
 .flex-container-blog {
   align-items: start;
 }
@@ -221,7 +183,7 @@ td {
 .flex-body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   min-height: 100vh; /* Ensure the container takes the full viewport height */
   margin: 0;
@@ -234,23 +196,25 @@ td {
 }
 
 .header {
-  flex: 10%;
+  flex: 0 0 auto;
   display: flex;
 }
 
 .content {
-  flex: 80%;
+    flex: 1 0 auto;
+  /* flex: 80%; */
   /* padding: 20px; */
   /* margin-top: 20px; */
 }
 
 .footer {
-  flex: 10%;
+    flex: 0 0 auto;
+  /* flex: 10%; */
   margin-top: 5%;
 }
 
 .title {
-  font-family: "Iosevka";
+  font-family: "Josefin Sans";
   font-size: 30px;
   flex: 30%;
   display: flex;
@@ -265,7 +229,7 @@ td {
 }
 
 .menu-item {
-  font-family: "Iosevka" !important;
+  font-family: "Josefin Sans" !important;
   margin-right: 15px;
 }
 
@@ -298,28 +262,10 @@ td {
     font-size: 13px;
   }
 }
-/* .content { */
-/*   list-style: none; */
-/*   align-items: start; */
-/*   flex-direction: row; */
-/*   flex: 4; */
-/* } */
-
-/* .header { */
-/*   display: flex; */
-/*   align-items: center; */
-/*   flex-direction: row; */
-/*   justify-content: flex-start; */
-/* } */
-/**/
-/* .footer { */
-/*   padding-top: 30px; */
-/*   margin-top: auto; */
-/*   padding-bottom: 22px; */
-/* } */
 
 .footer p {
-  font-family: "Iosevka light" !important;
+  font-family: "Josefin Sans" !important;
+  font-weight: 400;
   font-size: 12px;
 }
 
@@ -331,12 +277,7 @@ hr {
   width: 100%;
 }
 
-/* .menu { */
-/*   width: 200px; */
-/*   height: 150px; */
-/*   margin: 10px 10em; */
-/*   line-height: 150px; */
-/*   font-size: 1em; */
-/*   text-align: left; */
-/*   flex: 6; */
-/* } */
+code.highlight {
+    color: #ff6b6b;
+    font-size: 0.9em;
+}

@@ -3,7 +3,7 @@ title = "Cast arrays with pointers in Zig"
 date = 2023-08-14
 +++
 
-While implementing a Sha256 hashing algorithm using Zig, I encountered the problem of converting a [64]u8 array to a [16]u32 array. For example:
+While implementing a Sha256 hashing algorithm using Zig, I encountered the problem of converting a <code class="highlight">[64]u8</code> array to a <code class="highlight">[16]u32</code> array. For example:
 
 ```zig,linenos
  //From b to s
@@ -25,7 +25,7 @@ fn cast(buffer: [64]u8, blocks: [16]u32) void {
 }
 ```
 
-The first 8 bits buffer[idxBuff] are casted to 32 bits using the @as builtin function, and then shifted left (<<) 24 positions to fill with 0, moving the initial 8 bits from the right to the left.
+The first 8 bits <code class="highlight">buffer[idxBuff]</code> are casted to 32 bits using the <code class="highlight">@as</code> builtin function, and then shifted left (<<) 24 positions to fill with 0, moving the initial 8 bits from the right to the left.
 
 ```yml,linenos
 initial value: 01100001
@@ -85,7 +85,7 @@ Second line:
 for (@as(*align(1) const [16]u32, @ptrCast(b)), 0..) |*elem, i|
 ```
 
-The second line takes b (a pointer) and casts it using @ptrCast converting b to a pointer of \*align(1) const [16]u32 to achieve this is needed to use the builtin function @as to coerce the type. In this case the pointer is aligned to 1 because b is aligned to 1.
+The second line takes b (a pointer) and casts it using <code class="highlight">@ptrCast</code> converting b to a pointer of <code class="highlight">\*align(1) const [16]u32</code> to achieve this is needed to use the builtin function <code class="highlight">@as</code> to coerce the type. In this case the pointer is aligned to 1 because b is aligned to 1.
 
 The same result can be achieved by doing this:
 
@@ -93,7 +93,7 @@ The same result can be achieved by doing this:
 var bp: *align(1) const [16]u32 = @ptrCast(b);
 ```
 
-In this example the use of @as is not necessary because the type is declared along with the variable.
+In this example the use of <code class="highlight">@as</code> is not necessary because the type is declared along with the variable.
 
 After casting b the result is iterated with a for loop that receives the casted pointer and an index.
 
@@ -127,7 +127,7 @@ So this third line achieve that:
 s[i] = mem.readIntBig(u32, mem.asBytes(elem));
 ```
 
-First of all, the u32 value **_elem_** is passed to the `asBytes` function from the standard library to retrieve a slice of the underlying bytes of 'elem'. As a result, we end up with the same u8 values in the same order before being casted. Then, this slice is passed to the 'readIntBig' function. This function reads the slice of u8 values using big endian and casts it to u32.
+First of all, the u32 value **_elem_** is passed to the <code class="highlight">fn asBytes()</code> function from the standard library to retrieve a slice of the underlying bytes of 'elem'. As a result, we end up with the same u8 values in the same order before being casted. Then, this slice is passed to the 'readIntBig' function. This function reads the slice of u8 values using big endian and casts it to u32.
 
 {{ post_images(path="third-zig-post.png", caption="") }}
 
