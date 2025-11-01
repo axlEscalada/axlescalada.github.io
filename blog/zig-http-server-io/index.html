@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>axlscld</title>
+  <link rel="icon" href="/images/axl-logo.png">
+  <link rel="stylesheet" href="https://axlescalada.github.io/app.css"/>
+</head>
+
+<body>
+  <div class="flex-body">
+    <div class="header">
+      <h1 class="title"> 
+          <a class="title-link" href="https:&#x2F;&#x2F;axlescalada.github.io&#x2F;">
+          axlscld  
+          </a>
+      </h1>
+      <div class="menu">
+        <a href="https://axlescalada.github.io/blog/" class="menu-item">Blog</a>
+        <a href="https://www.linkedin.com/in/axel-escalada/" class="menu-item">Contact</a>
+      </div>
+    </div>
+    <div class="content">
+      
+<div class="flex-container-blog">
+  <h1 class="title">
+    Setting up an HTTP server in Zig 0.15
+  </h1>
+  
+  <p class="subtitle">2025-11-01 ⏲ 3 min read</p>
+   <p>Zig 0.15 introduced a new IO system that represents the first step toward a complete redesign of async I/O in Zig. While the full async capabilities are still being developed, the changes to HTTP server setup give us a glimpse of where Zig is heading.</p>
+<p>Here's a complete example of a minimal HTTP server using the new IO system:</p>
+<pre data-linenos data-lang="zig" style="background-color:#212121;color:#eeffff;" class="language-zig "><code class="language-zig" data-lang="zig"><table><tbody><tr><td>1</td><td><span style="color:#c792ea;">const</span><span> std </span><span style="color:#89ddff;">= </span><span style="font-style:italic;color:#c792ea;">@import</span><span style="color:#89ddff;">(</span><span style="color:#c3e88d;">&quot;std&quot;</span><span style="color:#89ddff;">);
+</span></td></tr><tr><td>2</td><td><span>
+</span></td></tr><tr><td>3</td><td><span style="color:#c792ea;">pub </span><span style="font-style:italic;color:#c792ea;">fn </span><span style="color:#82aaff;">main</span><span style="color:#89ddff;">() !</span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#89ddff;">{
+</span></td></tr><tr><td>4</td><td><span>    </span><span style="color:#c792ea;">const</span><span> address </span><span style="color:#89ddff;">= </span><span style="font-style:italic;color:#c792ea;">try</span><span> std.net.Address.</span><span style="color:#82aaff;">parseIp4</span><span style="color:#89ddff;">(</span><span style="color:#c3e88d;">&quot;127.0.0.1&quot;</span><span style="color:#89ddff;">, </span><span style="color:#f78c6c;">8080</span><span style="color:#89ddff;">);
+</span></td></tr><tr><td>5</td><td><span>
+</span></td></tr><tr><td>6</td><td><span>    </span><span style="color:#c792ea;">var</span><span> server </span><span style="color:#89ddff;">= </span><span style="font-style:italic;color:#c792ea;">try</span><span> address.</span><span style="color:#82aaff;">listen</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">std.net.Address.ListenOptions</span><span style="color:#89ddff;">{});
+</span></td></tr><tr><td>7</td><td><span>    </span><span style="font-style:italic;color:#c792ea;">defer</span><span> server.</span><span style="color:#82aaff;">deinit</span><span style="color:#89ddff;">();
+</span></td></tr><tr><td>8</td><td><span>
+</span></td></tr><tr><td>9</td><td><span>    </span><span style="font-style:italic;color:#c792ea;">while </span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">true</span><span style="color:#89ddff;">) {
+</span></td></tr><tr><td>10</td><td><span>        </span><span style="font-style:italic;color:#c792ea;">try </span><span style="color:#82aaff;">handleConnection</span><span style="color:#89ddff;">(</span><span style="font-style:italic;color:#c792ea;">try</span><span> server.</span><span style="color:#82aaff;">accept</span><span style="color:#89ddff;">());
+</span></td></tr><tr><td>11</td><td><span>    </span><span style="color:#89ddff;">}
+</span></td></tr><tr><td>12</td><td><span style="color:#89ddff;">}
+</span></td></tr><tr><td>13</td><td><span>
+</span></td></tr><tr><td>14</td><td><span style="font-style:italic;color:#c792ea;">fn </span><span style="color:#82aaff;">handleConnection</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">conn</span><span style="color:#89ddff;">: </span><span style="font-style:italic;color:#c792ea;">std.net.Server.Connection</span><span style="color:#89ddff;">) !</span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#89ddff;">{
+</span></td></tr><tr><td>15</td><td><span>    </span><span style="font-style:italic;color:#c792ea;">defer</span><span> conn.stream.</span><span style="color:#82aaff;">close</span><span style="color:#89ddff;">();
+</span></td></tr><tr><td>16</td><td><span>
+</span></td></tr><tr><td>17</td><td><span>    </span><span style="color:#c792ea;">var </span><span>recv_buffer</span><span style="color:#89ddff;">:</span><span> [</span><span style="color:#f78c6c;">1024</span><span>]</span><span style="font-style:italic;color:#c792ea;">u8 </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">undefined</span><span style="color:#89ddff;">;
+</span></td></tr><tr><td>18</td><td><span>    </span><span style="color:#c792ea;">var </span><span>send_buffer</span><span style="color:#89ddff;">:</span><span> [</span><span style="color:#f78c6c;">1024</span><span>]</span><span style="font-style:italic;color:#c792ea;">u8 </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">undefined</span><span style="color:#89ddff;">;
+</span></td></tr><tr><td>19</td><td><span>    </span><span style="color:#c792ea;">var</span><span> conn_reader </span><span style="color:#89ddff;">=</span><span> conn.stream.</span><span style="color:#82aaff;">reader</span><span style="color:#89ddff;">(&amp;</span><span>recv_buffer</span><span style="color:#89ddff;">);
+</span></td></tr><tr><td>20</td><td><span>    </span><span style="color:#c792ea;">var</span><span> conn_writer </span><span style="color:#89ddff;">=</span><span> conn.stream.</span><span style="color:#82aaff;">writer</span><span style="color:#89ddff;">(&amp;</span><span>send_buffer</span><span style="color:#89ddff;">);
+</span></td></tr><tr><td>21</td><td><span>
+</span></td></tr><tr><td>22</td><td><span>    </span><span style="color:#c792ea;">var</span><span> http_server </span><span style="color:#89ddff;">=</span><span> std.http.Server.</span><span style="color:#82aaff;">init</span><span style="color:#89ddff;">(</span><span>conn_reader.</span><span style="color:#82aaff;">interface</span><span style="color:#89ddff;">(), &amp;</span><span>conn_writer.interface</span><span style="color:#89ddff;">);
+</span></td></tr><tr><td>23</td><td><span>    </span><span style="color:#c792ea;">var</span><span> req </span><span style="color:#89ddff;">= </span><span style="font-style:italic;color:#c792ea;">try</span><span> http_server.</span><span style="color:#82aaff;">receiveHead</span><span style="color:#89ddff;">();
+</span></td></tr><tr><td>24</td><td><span>    </span><span style="font-style:italic;color:#c792ea;">try</span><span> req.</span><span style="color:#82aaff;">respond</span><span style="color:#89ddff;">(</span><span style="color:#c3e88d;">&quot;hello world</span><span style="color:#89ddff;">\n</span><span style="color:#c3e88d;">&quot;</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">std.http.Server.Request.RespondOptions</span><span style="color:#89ddff;">{});
+</span></td></tr><tr><td>25</td><td><span style="color:#89ddff;">}
+</span></td></tr></tbody></table></code></pre>
+<p>Compare this to how it was done before Zig 0.15:</p>
+<pre data-linenos data-lang="zig" style="background-color:#212121;color:#eeffff;" class="language-zig "><code class="language-zig" data-lang="zig"><table><tbody><tr><td>1</td><td><span style="font-style:italic;color:#c792ea;">fn </span><span style="color:#82aaff;">handleConnection</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">conn</span><span style="color:#89ddff;">: </span><span style="font-style:italic;color:#c792ea;">std.net.Server.Connection</span><span style="color:#89ddff;">) !</span><span style="font-style:italic;color:#c792ea;">void </span><span style="color:#89ddff;">{
+</span></td></tr><tr><td>2</td><td><span>    </span><span style="font-style:italic;color:#c792ea;">defer</span><span> conn.stream.</span><span style="color:#82aaff;">close</span><span style="color:#89ddff;">();
+</span></td></tr><tr><td>3</td><td><span>    </span><span style="color:#c792ea;">var </span><span>buffer</span><span style="color:#89ddff;">:</span><span> [</span><span style="color:#f78c6c;">1024</span><span>]</span><span style="font-style:italic;color:#c792ea;">u8 </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">undefined</span><span style="color:#89ddff;">;
+</span></td></tr><tr><td>4</td><td><span>    </span><span style="color:#c792ea;">var</span><span> http_server </span><span style="color:#89ddff;">=</span><span> std.http.Server.</span><span style="color:#82aaff;">init</span><span style="color:#89ddff;">(</span><span>conn</span><span style="color:#89ddff;">, &amp;</span><span>buffer</span><span style="color:#89ddff;">);
+</span></td></tr><tr><td>5</td><td><span>    </span><span style="color:#c792ea;">var</span><span> req </span><span style="color:#89ddff;">= </span><span style="font-style:italic;color:#c792ea;">try</span><span> http_server.</span><span style="color:#82aaff;">receiveHead</span><span style="color:#89ddff;">();
+</span></td></tr><tr><td>6</td><td><span>    </span><span style="font-style:italic;color:#c792ea;">try</span><span> req.</span><span style="color:#82aaff;">respond</span><span style="color:#89ddff;">(</span><span style="color:#c3e88d;">&quot;hello world</span><span style="color:#89ddff;">\n</span><span style="color:#c3e88d;">&quot;</span><span style="color:#89ddff;">, </span><span style="font-style:italic;color:#c792ea;">std.http.Server.Request.RespondOptions</span><span style="color:#89ddff;">{});
+</span></td></tr><tr><td>7</td><td><span style="color:#89ddff;">}
+</span></td></tr></tbody></table></code></pre>
+<p>The old approach was simpler: pass the connection and a single buffer to <code class="highlight">std.http.Server.init</code>. The new approach requires separate buffers and explicit reader/writer creation. But this added complexity serves a purpose.</p>
+<h2 id="why-the-io-system-matters">Why the IO system matters</h2>
+<p>The changes in Zig 0.15 are the foundation for a much larger redesign. The goal is to make Zig code work optimally across different execution models, from single-threaded blocking I/O to event loops with thread pools to stackless coroutines without rewriting your code.</p>
+<h2 id="the-bigger-picture">The bigger picture</h2>
+<p>The full vision for Zig's async I/O involves passing an <code class="highlight">Io</code> interface as a parameter to your functions, similar to how you pass an <code class="highlight">Allocator</code>. This will allow the caller to decide the execution model: blocking, thread pool, green threads, or stackless coroutines and inject it into all dependencies.</p>
+<p>The HTTP server changes in 0.15 are preparing the standard library for this future. By moving to explicit reader/writer interfaces now, the codebase can later be updated to work with the <code class="highlight">Io</code> interface without requiring massive rewrites.</p>
+<h2 id="running-the-server">Running the server</h2>
+<p>To run this server, save the code to a file (e.g., <code class="highlight">server.zig</code>) and compile it with:</p>
+<pre data-linenos data-lang="bash" style="background-color:#212121;color:#eeffff;" class="language-bash "><code class="language-bash" data-lang="bash"><table><tbody><tr><td>1</td><td><span style="color:#82aaff;">zig build-exe server.zig
+</span></td></tr><tr><td>2</td><td><span style="color:#82aaff;">./server
+</span></td></tr></tbody></table></code></pre>
+<p>Test it by navigating to <code class="highlight">http://127.0.0.1:8080</code> or using curl:</p>
+<pre data-linenos data-lang="bash" style="background-color:#212121;color:#eeffff;" class="language-bash "><code class="language-bash" data-lang="bash"><table><tbody><tr><td>1</td><td><span style="color:#82aaff;">curl http://127.0.0.1:8080
+</span></td></tr></tbody></table></code></pre>
+<p>You should see &quot;hello world&quot; as the response.</p>
+<h2 id="migrating-from-pre-0-15-code">Migrating from pre-0.15 code</h2>
+<p>If you're updating code from before Zig 0.15:</p>
+<p><strong>Old approach:</strong></p>
+<pre data-linenos data-lang="zig" style="background-color:#212121;color:#eeffff;" class="language-zig "><code class="language-zig" data-lang="zig"><table><tbody><tr><td>1</td><td><span style="color:#c792ea;">var </span><span>buffer</span><span style="color:#89ddff;">:</span><span> [</span><span style="color:#f78c6c;">1024</span><span>]</span><span style="font-style:italic;color:#c792ea;">u8 </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">undefined</span><span style="color:#89ddff;">;
+</span></td></tr><tr><td>2</td><td><span style="color:#c792ea;">var</span><span> http_server </span><span style="color:#89ddff;">=</span><span> std.http.Server.</span><span style="color:#82aaff;">init</span><span style="color:#89ddff;">(</span><span>conn</span><span style="color:#89ddff;">, &amp;</span><span>buffer</span><span style="color:#89ddff;">);
+</span></td></tr></tbody></table></code></pre>
+<p><strong>New approach:</strong></p>
+<pre data-linenos data-lang="zig" style="background-color:#212121;color:#eeffff;" class="language-zig "><code class="language-zig" data-lang="zig"><table><tbody><tr><td>1</td><td><span style="color:#c792ea;">var </span><span>recv_buffer</span><span style="color:#89ddff;">:</span><span> [</span><span style="color:#f78c6c;">1024</span><span>]</span><span style="font-style:italic;color:#c792ea;">u8 </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">undefined</span><span style="color:#89ddff;">;
+</span></td></tr><tr><td>2</td><td><span style="color:#c792ea;">var </span><span>send_buffer</span><span style="color:#89ddff;">:</span><span> [</span><span style="color:#f78c6c;">1024</span><span>]</span><span style="font-style:italic;color:#c792ea;">u8 </span><span style="color:#89ddff;">= </span><span style="color:#f78c6c;">undefined</span><span style="color:#89ddff;">;
+</span></td></tr><tr><td>3</td><td><span style="color:#c792ea;">var</span><span> conn_reader </span><span style="color:#89ddff;">=</span><span> conn.stream.</span><span style="color:#82aaff;">reader</span><span style="color:#89ddff;">(&amp;</span><span>recv_buffer</span><span style="color:#89ddff;">);
+</span></td></tr><tr><td>4</td><td><span style="color:#c792ea;">var</span><span> conn_writer </span><span style="color:#89ddff;">=</span><span> conn.stream.</span><span style="color:#82aaff;">writer</span><span style="color:#89ddff;">(&amp;</span><span>send_buffer</span><span style="color:#89ddff;">);
+</span></td></tr><tr><td>5</td><td><span style="color:#c792ea;">var</span><span> http_server </span><span style="color:#89ddff;">=</span><span> std.http.Server.</span><span style="color:#82aaff;">init</span><span style="color:#89ddff;">(</span><span>conn_reader.</span><span style="color:#82aaff;">interface</span><span style="color:#89ddff;">(), &amp;</span><span>conn_writer.interface</span><span style="color:#89ddff;">);
+</span></td></tr></tbody></table></code></pre>
+<p>The new approach requires more explicit setup, but it's preparing your code for a future where you'll be able to switch execution models without rewriting anything. The same HTTP server code will work efficiently whether you're using blocking I/O, an event loop, or stackless coroutines.</p>
+
+</div>
+
+    </div>
+    <div class="footer">
+      <hr>
+      <p>Author: Axel Escalada</p>
+      <p>All opinions expressed on this blog are my own and do not necessarily reflect the views, opinions, or policies of any current or past employers, organizations, or institutions I may be associated with. Any opinions, information, or content provided on this blog are intended for informational and entertainment purposes only.</p>
+    </div>
+  </div>
+</body>
+
+</html>

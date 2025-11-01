@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&display=swap');
+
+@font-face {
+  font-family: "Iosevka";
+  font-style: normal;
+  font-weight: 500;
+  src:
+    url("fonts/iosevka-custom-regular.woff2") format("woff2"),
+    url("fonts/iosevka-custom-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka medium";
+  /* font-style: normal; */
+  /* font-weight: 500; */
+  src:
+    url("fonts/iosevka-custom-medium.woff2") format("woff2"),
+    url("fonts/iosevka-custom-medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka light";
+  font-style: normal;
+  font-weight: 100;
+  src:
+    url("fonts/iosevka-custom-extendedlight.woff2") format("woff2"),
+    url("fonts/iosevka-custom-extendedlight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://mdn.github.io/web-fonts/LatoReg.ttf");
+}
+
+
+* {
+  font-family: "Josefin Sans", serif;
+}
+
+pre, pre *, 
+code, code * {
+  font-family: "Iosevka" !important;
+}
+
+body {
+  background-color: #141414;
+}
+
+.flex-container-index {
+    margin-top: 10%;
+}
+
+.flex-container-blog img {
+  border-radius: 6px;
+  border-top: 2px solid #d2d2d2;
+  border-right: 1px solid #d2d2d2;
+  border-left: 2px solid #d2d2d2;
+  border-bottom: 1px solid #d2d2d2;
+  border-radius: 10px;
+
+  filter: invert(0.95);
+  box-shadow: 6px 5px #ffffff;
+}
+
+.flex-container-blog figure {
+  margin-left: 0px;
+}
+
+::selection {
+  background: #925d91;
+}
+
+.profile {
+  width: 90px;
+  height: 90px;
+  transform: rotate(180deg);
+  position: relative;
+  float: left;
+}
+
+.resume {
+  text-align: justify;
+}
+
+.title-link {
+  font-family: "Josefin Sans";
+  color: #e7cb7b;
+  text-decoration: none;
+  padding-bottom: 0px;
+  border-bottom-style: solid;
+  border-bottom-width: 0px;
+  width: fit-content;
+}
+
+.subtitle {
+  margin: 1em 0em;
+  font-family: "Josefin Sans";
+  font-weight: 200;
+  font-size: 15px;
+}
+
+a {
+  color: #f6a2b0;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  width: fit-content;
+}
+
+a:hover {
+  color: #e6dcbc;
+}
+
+p,
+ul {
+  color: #e8e8e8;
+  font-size: 17.5px;
+  margin: 0;
+  letter-spacing: 0.3px;
+  line-height: 1.7rem;
+}
+
+li {
+  margin: 10px;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #dcb2a8 !important;
+}
+
+.blog-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.blog-li {
+  font-family: "Josefin Sans";
+  font-size: 15px;
+  color: #ede7dd;
+  margin-top: 1em;
+}
+
+pre {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 63, 103, 0.5) transparent;
+  /* background-color: #0f0f0f !important; */
+  background-color: #1c1c1c !important;
+  /* background-color: #ffffff !important; */
+  border-radius: 6px;
+  /* border-color: #424242 !important; */
+  border-top: 2px solid #2d2d2d;
+  /* border-top: 1px solid #000000; */
+  border-right: 1px solid #2d2d2d;
+  /* border-right: 1px solid #000000; */
+  border-left: 2px solid #2d2d2d;
+  /* border-left: 1px solid #000000; */
+  border-bottom: 1px solid #2d2d2d;
+  /* border-bottom: 1px solid #000000; */
+  box-shadow: 6px 5px #000000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+code {
+  padding-left: 5px;
+  margin: 10px 8px 8px 3px !important;
+  /* background-color: #0f0f0f !important; */
+  background-color: #1c1c1c !important;
+  overflow-y: hidden;
+}
+
+pre table td {
+  padding: 0;
+}
+
+/* numbers in code block */
+td:first-child {
+  width: 20px;
+  color: #696969;
+}
+
+/* Style for the code column */
+pre table td:nth-child(2) {
+  white-space: pre;
+}
+
+/* Ensure code respects indentation */
+pre table td:nth-child(2) code {
+  display: block;
+  tab-size: 4;
+  -moz-tab-size: 4;
+}
+
+span {
+  font-size: 15.4px;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td {
+  max-width: 100px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flex-container-blog {
+  align-items: start;
+}
+
+.flex-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh; /* Ensure the container takes the full viewport height */
+  margin: 0;
+}
+
+.header,
+.content,
+.footer {
+  width: 60%; /* Make them 100% wide */
+}
+
+.header {
+  flex: 0 0 auto;
+  display: flex;
+}
+
+.content {
+    flex: 1 0 auto;
+  /* flex: 80%; */
+  /* padding: 20px; */
+  /* margin-top: 20px; */
+}
+
+.footer {
+  flex: 0 0 auto;
+  margin-top: 5%;
+}
+
+.title {
+  font-family: "Josefin Sans";
+  font-size: 30px;
+  flex: 30%;
+  display: flex;
+  align-items: center; /* Center title content vertically */
+}
+
+.menu {
+  flex: 70%;
+  display: flex;
+  align-items: center; /* Center menu content vertically */
+  margin-left: 10%;
+}
+
+.menu-item {
+  font-family: "Josefin Sans" !important;
+  margin-right: 15px;
+}
+
+/* Media query for screens with a maximum width of 600px (mobile) */
+@media (max-width: 600px) {
+  .header,
+  .content,
+  .footer {
+    width: 95%; /* Set width to 100% for mobile view */
+  }
+  p {
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    line-height: 1.65rem;
+  }
+
+  .footer p {
+    font-size: 10px;
+  }
+
+  figure {
+    margin: 5%;
+  }
+
+  img {
+    width: 95%;
+  }
+
+  span {
+    font-size: 13px;
+  }
+}
+
+.footer p {
+  font-family: "Josefin Sans" !important;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+hr {
+  border: 1px solid #ede7dd;
+  border-radius: 5px;
+}
+.row {
+  width: 100%;
+}
+
+code.highlight {
+    color: #ff6b6b;
+    font-size: 0.9em;
+}
