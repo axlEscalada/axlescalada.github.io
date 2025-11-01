@@ -1,7 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&display=swap');
 
+@font-face {
+  font-family: "Iosevka";
+  font-style: normal;
+  font-weight: 500;
+  src:
+    url("fonts/iosevka-custom-regular.woff2") format("woff2"),
+    url("fonts/iosevka-custom-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka medium";
+  /* font-style: normal; */
+  /* font-weight: 500; */
+  src:
+    url("fonts/iosevka-custom-medium.woff2") format("woff2"),
+    url("fonts/iosevka-custom-medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Iosevka light";
+  font-style: normal;
+  font-weight: 100;
+  src:
+    url("fonts/iosevka-custom-extendedlight.woff2") format("woff2"),
+    url("fonts/iosevka-custom-extendedlight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://mdn.github.io/web-fonts/LatoReg.ttf");
+}
+
+
 * {
   font-family: "Josefin Sans", serif;
+}
+
+pre, pre *, 
+code, code * {
+  font-family: "Iosevka" !important;
 }
 
 body {
