@@ -8,6 +8,10 @@ body {
   background-color: #141414;
 }
 
+.flex-container-index {
+    margin-top: 10%;
+}
+
 .flex-container-blog img {
   border-radius: 6px;
   border-top: 2px solid #d2d2d2;
@@ -73,10 +77,10 @@ a:hover {
 p,
 ul {
   color: #e8e8e8;
-  font-size: 18px;
+  font-size: 17.5px;
   margin: 0;
-  letter-spacing: 0.2px;
-  line-height: 1.4rem;
+  letter-spacing: 0.3px;
+  line-height: 1.7rem;
 }
 
 li {
@@ -208,8 +212,7 @@ td {
 }
 
 .footer {
-    flex: 0 0 auto;
-  /* flex: 10%; */
+  flex: 0 0 auto;
   margin-top: 5%;
 }
 
